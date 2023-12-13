@@ -32,7 +32,7 @@ resource "aws_vpc" "main" {
   instance_tenancy = "default"
   tags = merge(
     local.default_tags, {
-      Name = "Group5-${var.prefix}-VPC-acs730"
+      Name = "Group10-${var.prefix}-VPC-acs730"
     }
   )
 }
@@ -58,7 +58,7 @@ resource "aws_subnet" "private_subnet" {
   availability_zone = data.aws_availability_zones.available.names[count.index]
   tags = merge(
     local.default_tags, {
-      Name = "Group5-${var.prefix}-private-subnet-${count.index}"
+      Name = "Group10-${var.prefix}-private-subnet-${count.index}"
     }
   )
 }
@@ -71,7 +71,7 @@ resource "aws_internet_gateway" "igw" {
 
   tags = merge(local.default_tags,
     {
-      "Name" = "Group5-${var.prefix}-igw"
+      "Name" = "Group10-${var.prefix}-igw"
     }
   )
 }
@@ -88,7 +88,7 @@ resource "aws_route_table" "public_subnets" {
   }
   
   tags = {
-    Name = "Group5-${var.prefix}-route-public-subnets"
+    Name = "Group10-${var.prefix}-route-public-subnets"
   }
 }
 
@@ -99,7 +99,7 @@ resource "aws_route_table" "private_subnets" {
   vpc_id = aws_vpc.main.id
   
   tags = {
-    Name = "Group5-${var.prefix}-route-private-subnets"
+    Name = "Group10-${var.prefix}-route-private-subnets"
   }
 }
 
